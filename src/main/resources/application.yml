@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: trackme-config
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file://${user.home}/KJH/dev/trackme-server/config
+#        git:
+#          uri: https://github.com/JinhyeonKwak/spring-cloud-config
+#          username: [username]
+#          password: [password]
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
+encrypt:
+  keystore:
+    location: file://${user.home}/KJH/practice/keystore/apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey
